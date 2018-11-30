@@ -1,0 +1,19 @@
+package es.apinazo.cloudsample.discovery;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+
+/**
+ * Discovery server, implemented with Spring Cloud Netflix Eureka.
+ *
+ * @{@link EnableEurekaServer} enables the server, allowing Eureka clients to auto register.
+ */
+@SpringBootApplication
+@EnableEurekaServer
+public class EurekaServerApp {
+
+    public static void main(String[] args) {
+        SpringApplication.run(EurekaServerApp.class);
+    }
+}
