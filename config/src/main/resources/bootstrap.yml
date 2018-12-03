@@ -1,0 +1,7 @@
+# bootstrap
+#
+# This configuration will be applied before the up is app and will have precedence over any other configurations.
+
+spring:
+  application:
+    name: config # Name used to register the app in the discovery server, aka the app ID.

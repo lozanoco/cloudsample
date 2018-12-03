@@ -1,0 +1,44 @@
+# Default configuration.
+
+# General info used by Actuator in the /info endpoint.
+info:
+  build:
+    version: @project.version@
+    artifactId: @project.artifactId@
+    groupId: @project.groupId@
+    name: discovery-server
+    description: ${info.build.name} is the gateway and edge service in the cloud.
+
+# Server.
+server:
+  port: 9999
+  compression:
+    enabled: true # Enable compression for html, xml, css and plain text.
+
+# Actuator.
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      enabled-by-default: true
+      exposure:
+        include: "*"
+        exclude: shutdown
+  metrics:
+    web:
+      server:
+        auto-time-requests: true
+
+# Zuul properties.
+zuul:
+  # A list of all mappings between contexts in the Zuul app and URLs of services
+  routes:
+    config:
+      # When /config/* then redirect to the configured URL.
+      # Example: http://localhost:9999/config/foo/dev => http://localhost:8888/foo/dev
+      url:  http://localhost:8888
+
+# Load balancing.
+ribbon:
+  eureka:
+    enabled: false # By now, is disabled.
