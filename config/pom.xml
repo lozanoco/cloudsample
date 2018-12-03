@@ -55,12 +55,6 @@
             <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
 
-        <!-- To secure the configurations. -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-
     </dependencies>
 
     <!-- Import the whole bunch of Spring Cloud dependencies related to the used version -->
