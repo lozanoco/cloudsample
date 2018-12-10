@@ -1,0 +1,48 @@
+# Default configuration.
+
+# General info used by Actuator in the /info endpoint.
+info:
+  build:
+    version: @project.version@
+    artifactId: @project.artifactId@
+    groupId: @project.groupId@
+    name: greetins-service
+    description: ${info.build.name} is a very simple service in the cloud.
+
+# Server
+server:
+  port: 0 # Use a random port so there can be several instances running at the same time.
+  compression:
+    enabled: true # Enable compression for html, xml, css and plain text.
+
+# Actuator.
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      enabled-by-default: true
+      exposure:
+        include: "*"
+        exclude: shutdown
+  metrics:
+    web:
+      server:
+        auto-time-requests: true
+
+# Spring properties.
+spring:
+
+  # Logs.
+  output:
+    ansi:
+      enabled: ALWAYS
+
+# Discovery server
+eureka:
+  client:
+    serviceUrl:
+      # URL of the Eureka server - taken from an env var - or localhost by default.
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true # Register the client with an IP address instead of a hostname.
+    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
