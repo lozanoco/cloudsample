@@ -42,13 +42,3 @@ zuul:
 ribbon:
   eureka:
     enabled: false # By now, is disabled.
-
-# Discovery server
-eureka:
-  client:
-    serviceUrl:
-      # URL of the Eureka server - taken from an env var - or localhost by default.
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
-  instance:
-    preferIpAddress: true # Register the client with an IP address instead of a hostname.
-    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
