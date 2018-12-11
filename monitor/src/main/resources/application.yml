@@ -1,0 +1,38 @@
+# Default configuration.
+
+# General info used by Actuator in the /info endpoint.
+info:
+  build:
+    version: @project.version@
+    artifactId: @project.artifactId@
+    groupId: @project.groupId@
+    name: monitor
+    description: ${info.build.name} takes care of the cloud, using Spring Boot Admin.
+
+# Server
+server:
+  port: 7777
+  compression:
+    enabled: true # Enable compression for html, xml, css and plain text.
+
+# Actuator.
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      enabled-by-default: true
+      exposure:
+        include: "*"
+        exclude: shutdown
+  metrics:
+    web:
+      server:
+        auto-time-requests: true
+
+# Spring properties.
+spring:
+
+  # Logs.
+  output:
+    ansi:
+      enabled: ALWAYS
