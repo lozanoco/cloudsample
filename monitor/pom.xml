@@ -28,6 +28,14 @@
             <version>2.0.4</version>
         </dependency>
 
+        <!-- Mail support
+             Spring Boot Admin will automatically enable email notifications
+             if this is in the classpath. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

@@ -1,0 +1,17 @@
+# bootstrap
+#
+# This configuration will be applied before the up is app and will have precedence over any other configurations.
+
+spring:
+  application:
+    name: monitor # Name used to register the app in the discovery server, aka the app ID.
+
+# Discovery server
+eureka:
+  client:
+    serviceUrl:
+      # URL of the Eureka server - taken from an env var - or localhost by default.
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true # Register the client with an IP address instead of a hostname.
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}

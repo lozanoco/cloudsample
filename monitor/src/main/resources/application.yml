@@ -36,3 +36,23 @@ spring:
   output:
     ansi:
       enabled: ALWAYS
+
+  # Spring Boot Admin custom properties, extend Spring Boot ones.
+  boot:
+    admin:
+      notify:
+        mail:
+          to: angelpinazo@gmail.com # Comma-delimited list of mail recipients of Admin notifications.
+
+  # Mail configuration.
+  # If configured, Admin will send email notifications.
+  mail:
+    host: smtp.sendgrid.net
+    port: 587
+    username: apikey
+    password: xxxxxxxxxxxxxxxxxxxxxxx # Replace by your key.
+    protocol: smtp
+    properties.mail.smtp:
+        auth: true
+        starttls.enable: true
+        ssl.trust: smtp.sendgrid.net
