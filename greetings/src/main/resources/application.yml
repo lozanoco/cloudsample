@@ -36,3 +36,16 @@ spring:
   output:
     ansi:
       enabled: ALWAYS
+
+# Logging configuration.
+logging:
+  level:
+    es.apinazo: TRACE # Level by package.
+    root: INFO # Global level for anything that doesn't match the level by package.
+  # file properties cannot be nested as all of them has values. Dot notation must be used.
+  file: /var/log/cloudsample/greetings.log # If have a value, logs will be written to this file.
+  file.max-history: 1 # Maximum of archive log files to keep.
+  file.max-size: 2MB # Maximum log file size.
+  pattern:
+    # Same pattern as the colorful default logs.
+    file: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"
