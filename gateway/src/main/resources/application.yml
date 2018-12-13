@@ -31,17 +31,40 @@ management:
 
 # Zuul properties.
 zuul:
+
+  # Exclude Eureka and Cloud Config.
+  # They are not intended to be served through an API gateway.
+  ignoredPatterns: /discovery/**, /monitor/**
+
   # A list of all mappings between contexts in the Zuul app and URLs of services
+  # Zuul automatically add mappings for the services registered in Eureka,
+  # using the service ID as the context path.
   routes:
-    config:
-      # When /config/* then redirect to the configured URL.
-      # Example: http://localhost:9999/config/foo/dev => http://localhost:8888/foo/dev
-      url:  http://localhost:8888
+
+    # This is the default mapping.
+    # If the context path is equal to the service ID,
+    # there is no need to define it, this mapping is automatic.
+    # A request with a URL with context path '/greetings/'
+    # will be routed to the service with ID 'greetings'.
+    # Example request: http://localhost:9999/greetings/services
+    greetings: /greetings/**
+
+    # Fine tuning a mapping.
+    # Alternatively you can set path and service ID independently.
+    # Example request: http://localhost:9999/config/foo/dev/master
+    configurationServer: # This is not a service ID.
+      serviceId: config # This is.
+      path: /config/**
 
 # Load balancing.
 ribbon:
   eureka:
-    enabled: false # By now, is disabled.
+    enabled: true # Enable to get service instances from Eureka to redirect to.
+
+# Service fine tuning.
+config: # The service ID.
+  ribbon:
+    ReadTimeout: 10000 # Give more time to Cloud Config for it can be a bit slow sometimes.
 
 # Logging configuration.
 logging:

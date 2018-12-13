@@ -6,7 +6,7 @@ info:
     version: @project.version@
     artifactId: @project.artifactId@
     groupId: @project.groupId@
-    name: discovery-server
+    name: config-server
     description: ${info.build.name} is the configuration server in the cloud.
 
 # Server.
