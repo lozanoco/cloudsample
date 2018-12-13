@@ -33,7 +33,7 @@ management:
 eureka:
   client:
     # Both false to avoid this error: "Cannot execute request on any known server".
-    registerWithEureka: false # Whether the server will try to register itself as a client.
+    registerWithEureka: true # Whether the server will try to register itself as a client.
     fetchRegistry: false # True to get the Eureka registry on startup.
 
 # Spring Framework properties.

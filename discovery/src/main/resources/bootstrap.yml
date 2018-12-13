@@ -5,3 +5,7 @@
 spring:
   application:
     name: discovery # Name used to register the app in the discovery server, aka the app ID.
+
+eureka:
+  server:
+    enableSelfPreservation: false # If true and there is only one Eureka instance, service instances are never removed.
