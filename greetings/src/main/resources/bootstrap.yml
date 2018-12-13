@@ -3,8 +3,16 @@
 # This configuration will be applied before the up is app and will have precedence over any other configurations.
 
 spring:
+
   application:
     name: greetings # Name used to register the app in the discovery server, aka the app ID.
+
+  cloud:
+    config:
+      name: ${spring.application.name} # The service ID is needed here before it has a chance to register in Eureka.
+      discovery:
+        enabled: true # To look for a service instead of an URL.
+        serviceId: config # Cloud Config client will look for 'configserver', by default.
 
 # Discovery server
 eureka:
@@ -15,3 +23,4 @@ eureka:
   instance:
     preferIpAddress: true # Register the client with an IP address instead of a hostname.
     instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
