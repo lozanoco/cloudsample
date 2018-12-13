@@ -8,6 +8,7 @@ spring:
     name: greetings # Name used to register the app in the discovery server, aka the app ID.
 
   cloud:
+    # Cloud Config client properties.
     config:
       name: ${spring.application.name} # The service ID is needed here before it has a chance to register in Eureka.
       discovery:

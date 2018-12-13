@@ -16,4 +16,15 @@
     <name>greetings-service</name>
     <description>A very polite service providing greetings</description>
 
+    <dependencies>
+
+        <!-- Cloud Config client
+             If this is in the classpath of the app, a Cloud Config client is enabled. -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+
+    </dependencies>
+
 </project>

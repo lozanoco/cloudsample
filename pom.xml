@@ -61,13 +61,6 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
-        <!-- Cloud Config client
-             If this is in the classpath of the app, a Cloud Config client is enabled. -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
-        </dependency>
-
     </dependencies>
 
     <!-- Import the whole bunch of Spring Cloud dependencies related to the used version -->
