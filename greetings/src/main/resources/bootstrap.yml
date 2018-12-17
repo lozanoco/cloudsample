@@ -12,6 +12,7 @@ spring:
     # This app gets its configuration from a Cloud Config server.
     config:
       name: ${spring.application.name} # The service ID is needed here before it has a chance to register in Eureka.
+      fail-fast: true # Totally halt this app if it can't find a config server instance.
       discovery:
         enabled: true # To look for a service instead of an URL.
         serviceId: config # Cloud Config client will look for 'configserver', by default.
