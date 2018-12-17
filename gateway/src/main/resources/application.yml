@@ -3,31 +3,18 @@
 # General info used by Actuator in the /info endpoint.
 info:
   build:
-    version: @project.version@
-    artifactId: @project.artifactId@
-    groupId: @project.groupId@
     name: discovery-server
     description: ${info.build.name} is the gateway and edge service in the cloud.
 
 # Server.
 server:
   port: 9999
-  compression:
-    enabled: true # Enable compression for html, xml, css and plain text.
 
-# Actuator.
-management:
-  endpoints:
-    web:
-      base-path: /actuator
-      enabled-by-default: true
-      exposure:
-        include: "*"
-        exclude: shutdown
-  metrics:
-    web:
-      server:
-        auto-time-requests: true
+# Spring properties
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
 
 # Zuul properties.
 zuul:
@@ -68,11 +55,4 @@ config: # The service ID.
 
 # Logging configuration.
 logging:
-  level:
-    es.apinazo: TRACE
-    root: INFO
   file: /var/log/cloudsample/gateway.log
-  file.max-history: 1
-  file.max-size: 2MB
-  pattern:
-    file: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"

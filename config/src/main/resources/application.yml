@@ -1,4 +1,10 @@
 # Default configuration.
+#
+# NOTE:
+# This app must be the second one to be up and running,
+# just after the discovery server is.
+# Any other apps depends on the configuration server and will
+# fail to start if there is none.
 
 # General info used by Actuator in the /info endpoint.
 info:
@@ -29,17 +35,6 @@ management:
       server:
         auto-time-requests: true
 
-# Spring Framework properties.
-spring:
-  cloud:
-    config:
-      server:
-        git:
-          # No need of credentials since the repo is public for reading.
-          # It's not necessary - nor convenient - to add the .git suffix.
-          uri: https://github.com/apinazo/config-repo
-          clone-on-start: true
-
 # Logging configuration.
 logging:
   level:
@@ -50,3 +45,72 @@ logging:
   file.max-size: 2MB
   pattern:
     file: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"
+
+# Spring Framework properties.
+spring:
+
+  # Logs.
+  output:
+    ansi:
+      enabled: ALWAYS
+
+  # Cloud related properties.
+  cloud:
+
+    # Definition of configuration repositories
+    config:
+      server:
+
+        git:
+          # No need of credentials since the repo is public for reading.
+          # It's not necessary - nor convenient - to add the .git suffix.
+          uri: https://github.com/apinazo/config-repo
+          clone-on-start: true
+
+        # Default configurations for all Cloud Config clients.
+        # Can be overriden by the client, using: spring.cloud.config.overrideNone=true.
+        overrides:
+
+            # Common properties for the Actuator /info endpoint.
+            info:
+              build:
+                version: @project.version@
+                artifactId: @project.artifactId@
+                groupId: @project.groupId@
+
+            # Embedded server.
+            server:
+              compression:
+                enabled: true # Enable compression for html, xml, css and plain text.
+
+            # Default logging configuration.
+            logging:
+              level:
+                es.apinazo: TRACE # Level by package.
+                root: INFO # Global level for anything that doesn't match the level by package.
+              file.max-history: 1 # Maximum of archive log files to keep.
+              file.max-size: 2MB # Maximum log file size.
+              pattern:
+                # Same pattern as the colorful default logs.
+                file: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"
+
+            # Send a heartbeat to Eureka.
+            eureka:
+              client:
+                healthcheck:
+                  enabled: true
+
+            # Actuator defaults.
+            management:
+              endpoints:
+                web:
+                  base-path: /actuator
+                  enabled-by-default: true
+                  exposure:
+                    include: "*"
+                    exclude: shutdown
+              metrics:
+                web:
+                  server:
+                    auto-time-requests: true
+

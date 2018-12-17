@@ -3,36 +3,16 @@
 # General info used by Actuator in the /info endpoint.
 info:
   build:
-    version: @project.version@
-    artifactId: @project.artifactId@
-    groupId: @project.groupId@
     name: monitor
     description: ${info.build.name} takes care of the cloud, using Spring Boot Admin.
 
 # Server
 server:
   port: 7777
-  compression:
-    enabled: true # Enable compression for html, xml, css and plain text.
 
-# Actuator.
-management:
-  endpoints:
-    web:
-      base-path: /actuator
-      enabled-by-default: true
-      exposure:
-        include: "*"
-        exclude: shutdown
-  metrics:
-    web:
-      server:
-        auto-time-requests: true
-
-# Spring properties.
+# Spring properties
 spring:
 
-  # Logs.
   output:
     ansi:
       enabled: ALWAYS
@@ -59,11 +39,4 @@ spring:
 
 # Logging configuration.
 logging:
-  level:
-    es.apinazo: TRACE
-    root: INFO
   file: /var/log/cloudsample/monitor.log
-  file.max-history: 1
-  file.max-size: 2MB
-  pattern:
-    file: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"

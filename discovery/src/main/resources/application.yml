@@ -1,4 +1,9 @@
 # Default configuration.
+#
+# NOTE:
+# This is the fixed point in the cloud architecture.
+# This app must be the first to be up and running.
+# It don't get any configuration from the configuration server.
 
 # General info used by Actuator in the /info endpoint.
 info:

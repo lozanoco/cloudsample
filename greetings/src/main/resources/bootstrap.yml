@@ -9,6 +9,7 @@ spring:
 
   cloud:
     # Cloud Config client properties.
+    # This app gets its configuration from a Cloud Config server.
     config:
       name: ${spring.application.name} # The service ID is needed here before it has a chance to register in Eureka.
       discovery:
