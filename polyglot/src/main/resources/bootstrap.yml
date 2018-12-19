@@ -1,0 +1,26 @@
+# bootstrap
+#
+# This configuration will be applied before the up is app and will have precedence over any other configurations.
+
+spring:
+
+  application:
+    name: polyglot # Name used to register the app in the discovery server, aka the app ID.
+
+  cloud:
+    config:
+      name: ${spring.application.name}
+      fail-fast: true
+      retry: true
+      discovery:
+        enabled: true
+        serviceId: config
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+

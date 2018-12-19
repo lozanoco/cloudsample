@@ -1,0 +1,13 @@
+
+# Sidecar app.
+# This application won't register itself in Eureka but will register the app it listens for.
+server:
+  port: 0
+
+# Sidecar configuration.
+# Only one app can be configured at a time.
+sidecar:
+  # Port of the non-JVM to listen for.
+  port: 3000
+  # URL of the health endpoint at that app. Must be implemented there and mimic the standard health JSON response.
+  health-uri: http://localhost:3000/actuator/health

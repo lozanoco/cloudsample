@@ -22,6 +22,7 @@
         <module>gateway</module>
         <module>greetings</module>
         <module>monitor</module>
+        <module>polyglot</module>
     </modules>
 
     <properties>
