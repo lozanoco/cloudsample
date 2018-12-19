@@ -13,8 +13,9 @@ spring:
     config:
       name: ${spring.application.name} # The service ID is needed here before it has a chance to register in Eureka.
       fail-fast: true # Totally halt this app if it can't find a config server instance.
+      retry: true # Retry requests to config server if the first one failed so if an instance its down, request to the next.
       discovery:
-        enabled: true # To look for a service instead of an URL.
+        enabled: true # To look for a service instance instead of just one at a fixed URL. This guarantees high availability.
         serviceId: config # Cloud Config client will look for 'configserver', by default.
 
 # Discovery server

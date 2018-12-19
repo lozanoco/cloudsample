@@ -10,6 +10,7 @@ spring:
     config:
       name: ${spring.application.name}
       fail-fast: true
+      retry: true
       discovery:
         enabled: true
         serviceId: config
