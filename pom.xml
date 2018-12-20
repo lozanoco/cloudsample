@@ -76,6 +76,13 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
+        <!-- Sleuth
+             Distributed tracing. -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+
     </dependencies>
 
     <!-- Import the whole bunch of Spring Cloud dependencies related to the used version -->
