@@ -1,0 +1,22 @@
+# Default configuration.
+
+# General info used by Actuator in the /info endpoint.
+info:
+  build:
+    name: zipkin
+    description: ${info.build.name} gathers timing data of requests between microservices.
+
+# Server
+server:
+  port: 9411 # The Zipkin well-known port.
+
+# Spring properties
+spring:
+
+  output:
+    ansi:
+      enabled: ALWAYS
+
+# Logging configuration.
+logging:
+  file: /var/log/cloudsample/zipkin.log

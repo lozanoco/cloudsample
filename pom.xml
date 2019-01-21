@@ -23,6 +23,7 @@
         <module>greetings</module>
         <module>monitor</module>
         <module>polyglot</module>
+        <module>zipkin</module>
     </modules>
 
     <properties>
@@ -85,18 +86,11 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
-        <!-- Sleuth
-             Distributed tracing. -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>
-
         <!-- Zipkin
              Tool for timing distributed requests, using Sleuth to identify them. -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
         </dependency>
 
     </dependencies>

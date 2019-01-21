@@ -1,0 +1,30 @@
+# bootstrap
+#
+# This configuration will be applied before the up is app and will have precedence over any other configurations.
+
+spring:
+
+  application:
+    name: zipkin # Name used to register the app in the discovery server, aka the app ID.
+
+  cloud:
+    # Cloud Config client properties.
+    # This app gets its configuration from a Cloud Config server.
+    config:
+      name: ${spring.application.name} # The service ID is needed here before it has a chance to register in Eureka.
+      fail-fast: true # Totally halt this app if it can't find a config server instance.
+      retry: true # Retry requests to config server if the first one failed so if an instance its down, request to the next.
+      discovery:
+        enabled: true # To look for a service instance instead of just one at a fixed URL. This guarantees high availability.
+        serviceId: config # Cloud Config client will look for 'configserver', by default.
+
+# Discovery server
+eureka:
+  client:
+    serviceUrl:
+      # URL of the Eureka server - taken from an env var - or localhost by default.
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true # Register the client with an IP address instead of a hostname.
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
