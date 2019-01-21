@@ -3,7 +3,7 @@
 # General info used by Actuator in the /info endpoint.
 info:
   build:
-    name: discovery-server
+    name: gateway
     description: ${info.build.name} is the gateway and edge service in the cloud.
 
 # Server.
