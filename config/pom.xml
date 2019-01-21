@@ -14,7 +14,7 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <name>cloudsample-config</name>
-    <description>Discovery server</description>
+    <description>Config server</description>
 
     <dependencies>
 
