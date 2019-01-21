@@ -1,5 +1,6 @@
 package es.apinazo.cloudsample.greetings;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
  * A demo of showing properties that come from a configuration file
  * served by the configuration server.
  */
+@Slf4j
 @RestController
 @RequestMapping
 public class GreetingsController {
@@ -22,11 +24,13 @@ public class GreetingsController {
 
     @RequestMapping("/hello")
     public String sayHello() {
+        log.info("Hello!");
         return hello;
     }
 
     @RequestMapping("/goodbye")
     public String sayGoodbye() {
+        log.info("Goodbye!");
         return goodbye;
     }
 
