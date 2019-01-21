@@ -114,3 +114,14 @@ spring:
                   server:
                     auto-time-requests: true
 
+            spring:
+
+              # Distributed tracing with Sleuth.
+              sleuth:
+                traceId128: true
+                sampler:
+                  probability: 1.0
+
+              # Tool for timing distributed requests.
+              zipkin:
+                baseUrl: http://localhost:9411/
