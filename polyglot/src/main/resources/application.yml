@@ -11,3 +11,9 @@ sidecar:
   port: 3000
   # URL of the health endpoint at that app. Must be implemented there and mimic the standard health JSON response.
   health-uri: http://localhost:3000/actuator/health
+
+# Spring properties
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS

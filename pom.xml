@@ -34,6 +34,15 @@
 
     <dependencies>
 
+        <!-- Lombok
+        Annotations to avoid boilerplate code in POJOs. -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.16</version>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -81,6 +90,13 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+
+        <!-- Zipkin
+             Tool for timing distributed requests, using Sleuth to identify them. -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
         </dependency>
 
     </dependencies>
