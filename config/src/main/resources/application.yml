@@ -112,7 +112,7 @@ spring:
               metrics:
                 web:
                   server:
-                    auto-time-requests: true
+                    auto-time-requests: false # Needed by Zipkin.
 
             spring:
 

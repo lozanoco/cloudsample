@@ -6,6 +6,10 @@ spring:
   application:
     name: discovery # Name used to register the app in the discovery server, aka the app ID.
 
+# Discovery server
 eureka:
   server:
     enableSelfPreservation: false # If true and there is only one Eureka instance, service instances are never removed.
+  instance:
+    preferIpAddress: true # Register the client with an IP address instead of a hostname.
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
