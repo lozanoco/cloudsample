@@ -73,7 +73,8 @@
         </dependency>
 
         <!-- Spring Retry
-             To re-invoke a failed operation such as a request to a service instance which is down. -->
+             To re-invoke a failed operation such as a request to a service instance which is down.
+             Also used by Cloud Config clients to retry if it does not answer. -->
         <dependency>
             <groupId>org.springframework.retry</groupId>
             <artifactId>spring-retry</artifactId>
